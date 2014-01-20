@@ -102,12 +102,14 @@
     if([_photosArray count]) {
         self.view.userInteractionEnabled = NO;
         
+#warning prefferably only thumbnail for prevImageView
         NSString *prevImageName = [_photosArray objectAtIndex:[self relativeIndex:-1]];
         [_prevImageView setImage:[UIImage imageNamed:prevImageName]];
         
         NSString *currImageName = [_photosArray objectAtIndex:_currentPageIndex];
         [_currImageView setImage:[UIImage imageNamed:currImageName]];
         
+#warning prefferably only thumbnail for nextImageView
         NSString *nextImageName = [_photosArray objectAtIndex:[self relativeIndex:1]];
         [_nextImageView setImage:[UIImage imageNamed:nextImageName]];
         
