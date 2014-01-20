@@ -7,12 +7,21 @@
 //
 
 #import "AppDelegate.h"
+#import "PhotoGalleryViewController.h"
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
+	self.viewController = [[PhotoGalleryViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];;
+	[self.window setRootViewController:navController];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 							

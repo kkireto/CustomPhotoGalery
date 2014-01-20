@@ -13,12 +13,14 @@
 		A38B8F05188D6B4A00E90D97 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A38B8F03188D6B4A00E90D97 /* InfoPlist.strings */; };
 		A38B8F07188D6B4A00E90D97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A38B8F06188D6B4A00E90D97 /* main.m */; };
 		A38B8F0B188D6B4A00E90D97 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A38B8F0A188D6B4A00E90D97 /* AppDelegate.m */; };
-		A38B8F14188D6B4A00E90D97 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38B8F13188D6B4A00E90D97 /* ViewController.m */; };
 		A38B8F1D188D6B4A00E90D97 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A38B8F1C188D6B4A00E90D97 /* XCTest.framework */; };
 		A38B8F1E188D6B4A00E90D97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A38B8EFA188D6B4A00E90D97 /* Foundation.framework */; };
 		A38B8F1F188D6B4A00E90D97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A38B8EFE188D6B4A00E90D97 /* UIKit.framework */; };
 		A38B8F27188D6B4A00E90D97 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A38B8F25188D6B4A00E90D97 /* InfoPlist.strings */; };
 		A38B8F29188D6B4A00E90D97 /* CustomPhotoGaleryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A38B8F28188D6B4A00E90D97 /* CustomPhotoGaleryTests.m */; };
+		A38B8F34188D6C4100E90D97 /* PhotoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38B8F33188D6C4100E90D97 /* PhotoGalleryViewController.m */; };
+		A38B8F39188D6D3500E90D97 /* PhotoGalleryViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A38B8F38188D6D3500E90D97 /* PhotoGalleryViewController~ipad.xib */; };
+		A38B8F3B188D6D4400E90D97 /* PhotoGalleryViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A38B8F3A188D6D4400E90D97 /* PhotoGalleryViewController~iphone.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,13 +44,15 @@
 		A38B8F08188D6B4A00E90D97 /* CustomPhotoGalery-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CustomPhotoGalery-Prefix.pch"; sourceTree = "<group>"; };
 		A38B8F09188D6B4A00E90D97 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A38B8F0A188D6B4A00E90D97 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A38B8F12188D6B4A00E90D97 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A38B8F13188D6B4A00E90D97 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A38B8F1B188D6B4A00E90D97 /* CustomPhotoGaleryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomPhotoGaleryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38B8F1C188D6B4A00E90D97 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A38B8F24188D6B4A00E90D97 /* CustomPhotoGaleryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CustomPhotoGaleryTests-Info.plist"; sourceTree = "<group>"; };
 		A38B8F26188D6B4A00E90D97 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A38B8F28188D6B4A00E90D97 /* CustomPhotoGaleryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPhotoGaleryTests.m; sourceTree = "<group>"; };
+		A38B8F32188D6C4100E90D97 /* PhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoGalleryViewController.h; sourceTree = "<group>"; };
+		A38B8F33188D6C4100E90D97 /* PhotoGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoGalleryViewController.m; sourceTree = "<group>"; };
+		A38B8F38188D6D3500E90D97 /* PhotoGalleryViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PhotoGalleryViewController~ipad.xib"; sourceTree = "<group>"; };
+		A38B8F3A188D6D4400E90D97 /* PhotoGalleryViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PhotoGalleryViewController~iphone.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +114,9 @@
 			children = (
 				A38B8F09188D6B4A00E90D97 /* AppDelegate.h */,
 				A38B8F0A188D6B4A00E90D97 /* AppDelegate.m */,
-				A38B8F12188D6B4A00E90D97 /* ViewController.h */,
-				A38B8F13188D6B4A00E90D97 /* ViewController.m */,
+				A38B8F32188D6C4100E90D97 /* PhotoGalleryViewController.h */,
+				A38B8F33188D6C4100E90D97 /* PhotoGalleryViewController.m */,
+				A38B8F35188D6CF300E90D97 /* InterfaceBuilder */,
 				A38B8F01188D6B4A00E90D97 /* Supporting Files */,
 			);
 			path = CustomPhotoGalery;
@@ -144,6 +149,31 @@
 				A38B8F25188D6B4A00E90D97 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A38B8F35188D6CF300E90D97 /* InterfaceBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				A38B8F36188D6D2700E90D97 /* iPad */,
+				A38B8F37188D6D2700E90D97 /* iPhone */,
+			);
+			path = InterfaceBuilder;
+			sourceTree = "<group>";
+		};
+		A38B8F36188D6D2700E90D97 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				A38B8F38188D6D3500E90D97 /* PhotoGalleryViewController~ipad.xib */,
+			);
+			path = iPad;
+			sourceTree = "<group>";
+		};
+		A38B8F37188D6D2700E90D97 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				A38B8F3A188D6D4400E90D97 /* PhotoGalleryViewController~iphone.xib */,
+			);
+			path = iPhone;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +253,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A38B8F05188D6B4A00E90D97 /* InfoPlist.strings in Resources */,
+				A38B8F3B188D6D4400E90D97 /* PhotoGalleryViewController~iphone.xib in Resources */,
+				A38B8F39188D6D3500E90D97 /* PhotoGalleryViewController~ipad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A38B8F14188D6B4A00E90D97 /* ViewController.m in Sources */,
+				A38B8F34188D6C4100E90D97 /* PhotoGalleryViewController.m in Sources */,
 				A38B8F0B188D6B4A00E90D97 /* AppDelegate.m in Sources */,
 				A38B8F07188D6B4A00E90D97 /* main.m in Sources */,
 			);
@@ -448,6 +480,7 @@
 				A38B8F2E188D6B4A00E90D97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A38B8F2F188D6B4A00E90D97 /* Build configuration list for PBXNativeTarget "CustomPhotoGaleryTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +489,7 @@
 				A38B8F31188D6B4A00E90D97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
