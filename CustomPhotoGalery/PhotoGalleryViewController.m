@@ -14,6 +14,7 @@
 @property(nonatomic,assign)NSInteger currentPageIndex;
 @property(nonatomic,assign)NSInteger previousPageIndex;
 @property(nonatomic,assign)NSInteger nextPageIndex;
+@property(nonatomic,assign)BOOL isNotFirstAppear;
 
 @end
 
@@ -32,29 +33,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    _mainScrollView.contentSize = CGSizeMake(_mainScrollView.frame.size.width*3, _mainScrollView.frame.size.height);
-    [_mainScrollView setContentOffset:CGPointMake(_mainScrollView.frame.size.width, 0)  animated:NO];
-    _mainScrollView.userInteractionEnabled = YES;
-    _mainScrollView.pagingEnabled = YES;
-    _mainScrollView.delegate = self;
+    _isNotFirstAppear = NO;
     
-    _prevImageView.frame = CGRectMake(0.0, 0.0, _mainScrollView.frame.size.width, _mainScrollView.frame.size.height);
-    _prevImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _currScrollView.frame = CGRectMake(_mainScrollView.frame.size.width, 0.0, _mainScrollView.frame.size.width, _mainScrollView.frame.size.height);
-    _currScrollView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _nextImageView.frame = CGRectMake(2*_mainScrollView.frame.size.width, 0.0, _mainScrollView.frame.size.width, _mainScrollView.frame.size.height);
-    _nextImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-#warning set photosArray here
-#warning add images in resources or what ever source is going to be used
-    _photosArray = [[NSMutableArray alloc] initWithObjects:@"image1", @"image2", @"image3", @"image3", nil];
-    
-    [self findCurrentIndex];
-    
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-    recognizer.numberOfTapsRequired = 2;
-    recognizer.delegate = self;
-    [_mainScrollView addGestureRecognizer:recognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,6 +48,13 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    if (_isNotFirstAppear) {
+        
+    }
+    else {
+        [self setupView];
+        _isNotFirstAppear = YES;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -81,16 +68,40 @@
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    
-    _mainScrollView.contentSize = CGSizeMake(_mainScrollView.frame.size.width*3, _mainScrollView.frame.size.height);
-    [_mainScrollView setContentOffset:CGPointMake(_mainScrollView.frame.size.width, 0)  animated:NO];
-    
-    _prevImageView.frame = CGRectMake(0.0, 0.0, _mainScrollView.frame.size.width, _mainScrollView.frame.size.height);
-    _currScrollView.frame = CGRectMake(_mainScrollView.frame.size.width, 0.0, _mainScrollView.frame.size.width, _mainScrollView.frame.size.height);
-    _nextImageView.frame = CGRectMake(2*_mainScrollView.frame.size.width, 0.0, _mainScrollView.frame.size.width, _mainScrollView.frame.size.height);
+    [self setScrollViewFrames];
 }
 
-#pragma mark -
+#pragma mark - setup view
+- (void)setupView {
+    
+    [self setScrollViewFrames];
+    
+#warning set photosArray here
+#warning add images in resources or what ever source is going to be used
+    _photosArray = [[NSMutableArray alloc] initWithObjects:@"image1", @"image2", @"image3", @"image3", nil];
+    
+    [self findCurrentIndex];
+    
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    recognizer.numberOfTapsRequired = 2;
+    recognizer.delegate = self;
+    [_mainScrollView addGestureRecognizer:recognizer];
+}
+
+- (void)setScrollViewFrames {
+    
+    _mainScrollView.contentSize = CGSizeMake(_mainScrollView.frame.size.width*3, 1.0);
+    [_mainScrollView setContentOffset:CGPointMake(_mainScrollView.frame.size.width, 0.0) animated:NO];
+    
+    _prevImageView.frame = CGRectMake(0.0, 0.0, _mainScrollView.frame.size.width, _mainScrollView.frame.size.height);
+    _prevImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _currScrollView.frame = CGRectMake(_mainScrollView.frame.size.width, 0.0, _mainScrollView.frame.size.width, _mainScrollView.frame.size.height);
+    _currScrollView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _nextImageView.frame = CGRectMake(2*_mainScrollView.frame.size.width, 0.0, _mainScrollView.frame.size.width, _mainScrollView.frame.size.height);
+    _nextImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+}
+
+#pragma mark - set current index
 - (void)setCurrentIndex:(NSInteger)currentIndex {
     
     _currentPageIndex = currentIndex;
