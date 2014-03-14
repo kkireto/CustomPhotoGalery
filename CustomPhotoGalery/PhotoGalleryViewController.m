@@ -12,8 +12,7 @@
 
 @property(nonatomic,strong)NSMutableArray *photosArray;
 @property(nonatomic,assign)NSInteger currentPageIndex;
-@property(nonatomic,assign)NSInteger previousPageIndex;
-@property(nonatomic,assign)NSInteger nextPageIndex;
+@property(nonatomic,assign)NSInteger provisionalPageIndex;
 @property(nonatomic,assign)BOOL isNotFirstAppear;
 
 @end
@@ -93,11 +92,11 @@
     _mainScrollView.contentSize = CGSizeMake(_mainScrollView.frame.size.width*3, 1.0);
     [_mainScrollView setContentOffset:CGPointMake(_mainScrollView.frame.size.width, 0.0) animated:NO];
     
-    _prevImageView.frame = CGRectMake(0.0, 0.0, _mainScrollView.frame.size.width, _mainScrollView.frame.size.height);
+    _prevImageView.frame = CGRectMake(0.0, 0.0, _mainScrollView.frame.size.width - 10.0, _mainScrollView.frame.size.height);
     _prevImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _currScrollView.frame = CGRectMake(_mainScrollView.frame.size.width, 0.0, _mainScrollView.frame.size.width, _mainScrollView.frame.size.height);
+    _currScrollView.frame = CGRectMake(_mainScrollView.frame.size.width, 0.0, _mainScrollView.frame.size.width - 10.0, _mainScrollView.frame.size.height);
     _currScrollView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _nextImageView.frame = CGRectMake(2*_mainScrollView.frame.size.width, 0.0, _mainScrollView.frame.size.width, _mainScrollView.frame.size.height);
+    _nextImageView.frame = CGRectMake(2*_mainScrollView.frame.size.width, 0.0, _mainScrollView.frame.size.width - 10.0, _mainScrollView.frame.size.height);
     _nextImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
 
@@ -171,21 +170,25 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
-    
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    CGFloat pageWidth = scrollView.frame.size.width;
-    _previousPageIndex = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    if (sender == _mainScrollView) {
+        
+        _provisionalPageIndex = _currentPageIndex;
+        if (sender.contentOffset.x >= 1.5*sender.frame.size.width) {
+            _provisionalPageIndex = [self relativeIndex:1];
+        }
+        else if (sender.contentOffset.x < 0.5*sender.frame.size.width) {
+            _provisionalPageIndex = [self relativeIndex:-1];
+        }
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)sender {
     
-    CGFloat pageWidth = sender.frame.size.width;
-    int page = floor((sender.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    
-    //in case we are still in same page, ignore the swipe action
-    if(_previousPageIndex == page) return;
+    if (sender != _mainScrollView) {
+        return;
+    }
+    //incase we are still in same page, ignore the swipe action
+    if(_currentPageIndex == _provisionalPageIndex) return;
     
     if(sender.contentOffset.x >= sender.frame.size.width) {
         //swipe left, go to next image
